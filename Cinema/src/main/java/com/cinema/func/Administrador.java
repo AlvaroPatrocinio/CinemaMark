@@ -1,4 +1,6 @@
 package com.cinema.func;
+import com.cinema.JsonCinema;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -12,6 +14,9 @@ public class Administrador extends Funcionario {
     static Scanner sca = new Scanner (System.in);
     private static int proximoId = 1;
     private static List<Administrador> administradores = new ArrayList<>();
+
+    private static final String FILE_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/admins.json";
+
 
     /**
      * Construtor para criar um novo administrador com informações básicas.
@@ -27,21 +32,24 @@ public class Administrador extends Funcionario {
     }
 
     public static void cadastrarAdministrador(){
-        int idFuncionario = proximoId;
 
-        System.out.print("Digite o nome do funcionário: ");
+        Administrador novoAdministrador = new Administrador();
+
+        novoAdministrador.setIdFuncionario(proximoId++);
+        novoAdministrador.setIsAdm(true);
+        System.out.print("Digite o nome do administrador: ");
         String nome = sca.nextLine();
 
-        System.out.print("Digite o nome de usuário do funcionário: ");
+        System.out.print("Digite o nome de usuário do administrador: ");
         String usuario = sca.nextLine();
 
-        System.out.print("Digite a senha do funcionário: ");
+        System.out.print("Digite a senha do administrador: ");
         String senha = sca.nextLine();
 
-        Administrador novoAdministrador = new Administrador(idFuncionario, nome, usuario, senha);
-
         administradores.add(novoAdministrador);
-            }
+
+        JsonCinema.escreverObjeto(administradores, FILE_PATH);
+    }
 
     /**
      * Construtor padrão para criar um administrador sem especificar informações.

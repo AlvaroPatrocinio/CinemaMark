@@ -1,4 +1,6 @@
 package com.cinema.produto;
+import com.cinema.JsonCinema;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,9 +18,12 @@ public class Produto {
     private double precoUnitario; // Preço unitário do produto
     private int quantidadeEstoque; // Quantidade em estoque do produto
     private int produtoId; // Identificador único do produto
-    private static int count = 0; // Contador para gerar IDs únicos
-    private static Scanner scp = new Scanner(System.in);
+
+    private static int numProdutos = 0; // Contador para gerar IDs únicos
+
+
     private static Scanner sc = new Scanner(System.in);
+
     private static List<Produto> produtos = new ArrayList<>();
     static SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -32,37 +37,39 @@ public class Produto {
      * @param dataValidade      A data de validade do produto.
      * @param precoUnitario     O preço unitário do produto.
      * @param quantidadeEstoque A quantidade em estoque do produto.
-     * @param produtoId         O identificador único do produto.
      */
     public Produto(String nome, String categoria, Date dataFabricacao, Date dataValidade,
-                   double precoUnitario, int quantidadeEstoque, int produtoId) {
+                   double precoUnitario, int quantidadeEstoque) {
         this.nome = nome;
         this.categoria = categoria;
         this.dataFabricacao = dataFabricacao;
         this.dataValidade = dataValidade;
         this.precoUnitario = precoUnitario;
         this.quantidadeEstoque = quantidadeEstoque;
-        this.produtoId = count; // Atribui o ID e incrementa o contador
-        count++;
+        this.produtoId = numProdutos++;
     }
+
+    private static final String FILE_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/produtos.json";
 
     /**
      * Construtor padrão para criar um produto.
      */
     public Produto() {
-        this.produtoId = produtoId++;
+
     }
 
     public static String cadastrarProduto(Produto produto){
         
         Produto novoProduto = new Produto();
 
+        novoProduto.setProdutoId(numProdutos++);
+
         System.out.println("Digite o nome do produto:");
-        String nome = scp.nextLine();
+        String nome = sc.nextLine();
         novoProduto.setNome(nome);
 
         System.out.println("Digite a categoria do produto:");
-        String categoria = scp.nextLine();
+        String categoria = sc.nextLine();
         novoProduto.setCategoria(categoria);
 
         System.out.println("Digite a data de Fabricação:");
@@ -86,17 +93,17 @@ public class Produto {
         }
 
         System.out.println("Digite o preço:");
-        Double precoUnitario = scp.nextDouble();
+        Double precoUnitario = sc.nextDouble();
         novoProduto.setPrecoUnitario(precoUnitario);
 
         System.out.println("Digite a quantidade a dar entrada:");
-        int quantidadeEstoque = scp.nextInt();
+        int quantidadeEstoque = sc.nextInt();
         novoProduto.setQuantidadeEstoque(quantidadeEstoque);
 
-        int produtoId = count;
-        novoProduto.setProdutoId(produtoId);
-
         produtos.add(novoProduto);
+
+        JsonCinema.escreverObjeto(produtos, FILE_PATH);
+
         return novoProduto.toString();
     }
 

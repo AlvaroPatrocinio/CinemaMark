@@ -59,6 +59,7 @@ public class Ingresso {
         novoIngresso.setSala(getSala());
 
         ingressos.add(novoIngresso);  // Adiciona o ingresso à lista de ingressos
+
         return ingressos.toString();  // Retorna uma representação em String dos ingressos cadastrados
     }
 

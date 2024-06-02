@@ -1,4 +1,6 @@
 package com.cinema.cine;
+
+import com.cinema.JsonCinema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -8,13 +10,13 @@ import java.util.Scanner;
  * Representa um filme do cinema.
  */
 public class Filme {
+    private int id; /* O ID do filme */
     private String nome; /** O nome do filme */
     private String genero; /** O gênero do filme para assimilar com as preferências do cliente */
     private String diretor; /** O diretor do filme */
     private String descrição; /* A descrição do filme */
-    private int id; /* O ID do filme */
 
-    /** Número total de clientes criados. */
+    /** Número total de filmes criados. */
     private static int numFilmes = 0;
 
     /**
@@ -28,16 +30,14 @@ public class Filme {
     /** Inicializando lista de filmes */
     private static List<Filme> filmes = new ArrayList<>();
     private static Scanner scf = new Scanner(System.in);
- 
- 
-    public Filme(String nome, String genero, String diretor, String descrição, int id) {
+
+    private static final String FILE_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/filmes.json";
+
+    public Filme(String nome, String genero, String diretor, String descrição) {
         this.nome = nome;
         this.genero = genero;
         this.diretor = diretor;
         this.descrição = descrição;
-        this.id = numFilmes;
-        numFilmes++;
-
     }
 
     public Filme(){
@@ -46,6 +46,8 @@ public class Filme {
     public static String cadastrarFilme(Filme filme) {
 
         Filme novoFilme = new Filme();
+
+        novoFilme.setId(++numFilmes);
 
         System.out.println("Digite o nome do filme:");
         String nome = scf.nextLine();
@@ -64,6 +66,8 @@ public class Filme {
         novoFilme.setDescrição(descricao);
 
         filmes.add(novoFilme);
+
+        JsonCinema.escreverObjeto(filmes, FILE_PATH);
         return novoFilme.toString();
     }
 
@@ -130,6 +134,22 @@ public class Filme {
      */
     public void setDescrição(String descrição) {
         this.descrição = descrição;
+    }
+
+    /**
+     * Obtém a descrição do filme.
+     * @return A descrição do filme.
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * Define a descrição do filme.
+     * @param id A nova descrição do filme.
+     */
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**

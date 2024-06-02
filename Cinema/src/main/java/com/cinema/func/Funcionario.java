@@ -1,5 +1,7 @@
 package com.cinema.func;
 
+import com.cinema.JsonCinema;
+
 import java.util.List;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -13,11 +15,13 @@ public class Funcionario {
     private static Scanner sc = new Scanner(System.in);
     private static int proximoId = 1;
 
-
     private int idFuncionario; // ID único do funcionário
     private String nome; // Nome do funcionário
     private String usuario; // Nome de usuário para login
     private String senha; // Senha para login
+
+
+    private static final String FILE_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/funcionarios.json";
 
     /**
      * Construtor para inicializar um Funcionario com informações completas.
@@ -125,6 +129,10 @@ public class Funcionario {
     }
 
     public static void cadastrarFuncionario() {
+        Funcionario novoFuncionario = new Funcionario();
+
+        novoFuncionario.setIdFuncionario(proximoId++);
+
         System.out.println("Digite o nome do funcionário:");
         String nome = sc.nextLine();
 
@@ -134,8 +142,9 @@ public class Funcionario {
         System.out.println("Digite a senha para login:");
         String senha = sc.nextLine();
 
-        Funcionario novoFuncionario = new Funcionario(proximoId++, nome, usuario, senha);
         funcionarios.add(novoFuncionario);
+
+        JsonCinema.escreverObjeto(funcionarios, FILE_PATH);
 
         System.out.println("Funcionário cadastrado com sucesso!");
         //System.out.println(novoFuncionario);

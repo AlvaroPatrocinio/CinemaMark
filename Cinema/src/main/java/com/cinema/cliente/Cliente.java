@@ -1,5 +1,6 @@
 package com.cinema.cliente;
 
+import com.cinema.JsonCinema;
 import com.cinema.produto.Produto;
 
 import java.util.ArrayList;
@@ -26,6 +27,8 @@ public class Cliente {
     /** Número total de clientes criados, acessível mesmo por classes derivadas. */
     protected static int numClientes2 = 0;
 
+    private static final String FILE_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/clientes.json";
+
     /** Inicializando lista de clientes */
     private static List<Cliente> clientes = new ArrayList<>();
     private static Scanner sc = new Scanner(System.in);
@@ -38,6 +41,8 @@ public class Cliente {
      */
     public static String cadastrarCliente(Cliente cliente) {
         Cliente novoCliente = new Cliente();
+
+        novoCliente.setIdCliente(numClientes++);
 
         System.out.println("Digite o nome do cliente:");
         String nome = sc.nextLine();
@@ -59,6 +64,8 @@ public class Cliente {
         novoCliente.setPreferencais(preferencias);
 
         clientes.add(novoCliente);
+
+        JsonCinema.escreverObjeto(clientes, FILE_PATH );
         return novoCliente.toString();
     }
     
