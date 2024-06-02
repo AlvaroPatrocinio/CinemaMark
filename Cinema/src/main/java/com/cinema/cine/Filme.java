@@ -1,4 +1,8 @@
 package com.cinema.cine;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 
 /**
  * Representa um filme do cinema.
@@ -8,6 +12,10 @@ public class Filme {
     private String genero; /** O gênero do filme para assimilar com as preferências do cliente */
     private String diretor; /** O diretor do filme */
     private String descrição; /* A descrição do filme */
+    private int id; /* O ID do filme */
+
+    /** Número total de clientes criados. */
+    private static int numFilmes = 0;
 
     /**
      * Construtor para criar um novo filme.
@@ -16,12 +24,49 @@ public class Filme {
      * @param diretor O diretor do filme.
      * @param descrição A descrição do filme.
      */
-    public Filme(String nome, String genero, String diretor, String descrição) {
+
+    /** Inicializando lista de filmes */
+    private static List<Filme> filmes = new ArrayList<>();
+    private static Scanner scf = new Scanner(System.in);
+ 
+ 
+    public Filme(String nome, String genero, String diretor, String descrição, int id) {
         this.nome = nome;
         this.genero = genero;
         this.diretor = diretor;
         this.descrição = descrição;
+        this.id = numFilmes;
+        numFilmes++;
+
     }
+
+    public Filme(){
+
+    }
+    public static String cadastrarFilme(Filme filme) {
+
+        Filme novoFilme = new Filme();
+
+        System.out.println("Digite o nome do filme:");
+        String nome = scf.nextLine();
+        novoFilme.setNome(nome);
+
+        System.out.println("Digite o genero do filme:");
+        String genero = scf.nextLine();
+        novoFilme.setGenero(genero);
+
+        System.out.println("Digite o diretor:");
+        String diretor = scf.nextLine();
+        novoFilme.setDiretor(diretor);
+
+        System.out.println("Digite a descrição:");
+        String descricao = scf.nextLine();
+        novoFilme.setDescrição(descricao);
+
+        filmes.add(novoFilme);
+        return novoFilme.toString();
+    }
+
 
     /**
      * Obtém o nome do filme.
@@ -98,6 +143,7 @@ public class Filme {
                 ", genero='" + genero + '\'' +
                 ", diretor='" + diretor + '\'' +
                 ", descrição='" + descrição + '\'' +
+                ", id='" + id + '\'' +
                 '}';
     }
 }

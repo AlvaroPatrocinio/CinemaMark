@@ -138,7 +138,7 @@ public class Funcionario {
         funcionarios.add(novoFuncionario);
 
         System.out.println("Funcionário cadastrado com sucesso!");
-        System.out.println(novoFuncionario);
+        //System.out.println(novoFuncionario);
     }
 
     public static void selecionarFuncionario() {

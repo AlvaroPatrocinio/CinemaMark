@@ -1,10 +1,4 @@
 package com.cinema;
-// Importa as classes ArrayList, List e Scanner do pacote java.util.
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
-
 
 public class Main {
     
