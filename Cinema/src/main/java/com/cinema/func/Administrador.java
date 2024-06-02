@@ -1,4 +1,7 @@
 package com.cinema.func;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 /**
  * Representa um administrador dentro do sistema de cinema.
@@ -6,6 +9,9 @@ package com.cinema.func;
 public class Administrador extends Funcionario {
 
     private boolean isAdmin; // Indica se o funcionário é um administrador ou não
+    static Scanner sca = new Scanner (System.in);
+    private static int proximoId = 1;
+    private static List<Administrador> administradores = new ArrayList<>();
 
     /**
      * Construtor para criar um novo administrador com informações básicas.
@@ -19,6 +25,23 @@ public class Administrador extends Funcionario {
         super(idFuncionario, nome, usuario, senha); // Chama o construtor da superclasse Funcionario
         this.setIsAdm(true); // Define que este funcionário é um administrador
     }
+
+    public static void cadastrarAdministrador(){
+        int idFuncionario = proximoId;
+
+        System.out.print("Digite o nome do funcionário: ");
+        String nome = sca.nextLine();
+
+        System.out.print("Digite o nome de usuário do funcionário: ");
+        String usuario = sca.nextLine();
+
+        System.out.print("Digite a senha do funcionário: ");
+        String senha = sca.nextLine();
+
+        Administrador novoAdministrador = new Administrador(idFuncionario, nome, usuario, senha);
+
+        administradores.add(novoAdministrador);
+            }
 
     /**
      * Construtor padrão para criar um administrador sem especificar informações.

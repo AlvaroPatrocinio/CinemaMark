@@ -1,4 +1,3 @@
-
 2. O sistema será utilizado pelos colaboradores e pelo administrador
 
 4. Utilizar a palavra-chave super para implementar os construtores das subclasses.
@@ -14,9 +13,6 @@ atributos;
 
 10. Cada venda efetuada vai gerar um extrato que deverá ser impresso e salvo junto
 com a informação do cliente que fez a compra.
-
-12. Criar um método de classe para classe Sistema que deverá retornar quantas
-instâncias foram criadas dos tipos Cliente e Produtos;
 
 13. Implementar a interface Comparator para as classes Filme e Venda e fazer
 comparações por diferentes atributos.

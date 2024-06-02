@@ -1,6 +1,7 @@
 package com.cinema;
 import com.cinema.cine.Filme;
 import com.cinema.cliente.Cliente;
+import com.cinema.func.Administrador;
 import com.cinema.func.Funcionario;
 import com.cinema.produto.Produto;
 import java.util.Scanner;
@@ -11,7 +12,8 @@ public class Sistema {
  Cliente cliente = new Cliente();
  Produto produto = new Produto();
  Filme filme = new Filme();
- Funcionario Funcionario = new Funcionario();
+ Funcionario funcionario = new Funcionario();
+ Administrador administrador = new Administrador();
 
     private static Sistema instance;
     public static Sistema getInstance() {
@@ -47,7 +49,7 @@ public class Sistema {
 default:
             System.out.println("------------Opção Inválida!------------");
 
-
+        //Case 4: Menu de cadastros - Atenção na concatenação do switch, ele confunde devido ser switch dentro de switch.
         case 4:
             exibirInicio();
             System.out.println("----------------------------------------------");
@@ -58,7 +60,8 @@ default:
             System.out.println("/    Opção 2 - Cadastro de Filmes    /");
             System.out.println("/    Opção 3 - Cadastro de Cliente     /");
             System.out.println("/    Opção 4 - Cadastro de Funcionário     /");
-            System.out.println("/    Opção 5 - Menu Anterior     /");
+            System.out.println("/    Opção 5 - Cadastro de Administrador     /");
+            System.out.println("/    Opção 6 - Menu Anterior     /");
 
                 int option1 = input2.nextInt();
                 switch (option1){
@@ -88,13 +91,21 @@ default:
                 menuadm();    
             
             case 4:
-                Funcionario.cadastrarFuncionario();
+                funcionario.cadastrarFuncionario();
                 System.out.println("----------------------------------------------");
                 System.out.println("--------Funcionario Cadastrado com Sucesso----");
                 System.out.println("----------------------------------------------");
                 System.out.println("----------------------------------------------");
                 menuadm();  
             case 5:
+                administrador.cadastrarAdministrador();
+                System.out.println("----------------------------------------------");
+                System.out.println("--------Administrador Cadastrado com Sucesso--");
+                System.out.println("----------------------------------------------");
+                System.out.println("----------------------------------------------");
+                menuadm();  
+            
+            case 6:
             menuadm();                       
             }
 case 5:
