@@ -1,0 +1,29 @@
+
+2. O sistema será utilizado pelos colaboradores e pelo administrador
+
+4. Utilizar a palavra-chave super para implementar os construtores das subclasses.
+
+5. O sistema deverá armazenar de forma estática os 5 balcões do cinema.
+
+6. Deve ser possível cadastrar os colaboradores no sistema, alterar ou editar seus
+atributos;
+
+8. Verificar e imprimir dados das vendas e dos clientes;
+
+9. Os produtos, filmes e os clientes devem ser salvos de forma dinâmica no sistema.
+
+10. Cada venda efetuada vai gerar um extrato que deverá ser impresso e salvo junto
+com a informação do cliente que fez a compra.
+
+12. Criar um método de classe para classe Sistema que deverá retornar quantas
+instâncias foram criadas dos tipos Cliente e Produtos;
+
+13. Implementar a interface Comparator para as classes Filme e Venda e fazer
+comparações por diferentes atributos.
+
+14. Salve e recupere todas as informações dos Clientes, Filmes, Produtos, Vendas,
+Colaboradores e Estoque em um arquivo de texto. Utilizem classes já prontas na
+internet que trabalhem com o formato json. Ao manipular um arquivo utilize os
+conceitos aprendidos em aula para alocar e desalocar recursos com segurança.
+
+15. Gerar um JavaDoc de todo o seu projeto.
