@@ -1,0 +1,2 @@
+
+[{"nome":"Pipoca","categoria":"Alimentos","dataFabricacao":"Dec 12, 2021, 12:00:00 AM","dataValidade":"Dec 12, 2022, 12:00:00 AM","precoUnitario":12.99,"quantidadeEstoque":50.0,"produtoId":0.0},{"nome":"Refrigerante","categoria":"Alimentos","dataFabricacao":"Dec 12, 2022, 12:00:00 AM","dataValidade":"Dec 12, 2026, 12:00:00 AM","precoUnitario":10.0,"quantidadeEstoque":250,"produtoId":0}]
