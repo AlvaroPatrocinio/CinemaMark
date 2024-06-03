@@ -11,15 +11,14 @@ import java.util.ArrayList;
  */
 public class Funcionario {
 
-    private static List<Funcionario> funcionarios = new ArrayList<>();
-    private static Scanner sc = new Scanner(System.in);
-    private static int proximoId = 1;
-
     private int idFuncionario; // ID único do funcionário
     private String nome; // Nome do funcionário
     private String usuario; // Nome de usuário para login
     private String senha; // Senha para login
 
+    private static List<Funcionario> funcionarios = new ArrayList<>();
+    private static Scanner sc = new Scanner(System.in);
+    private static int proximoId = 1;
 
     private static final String FILE_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/funcionarios.json";
 
@@ -135,12 +134,15 @@ public class Funcionario {
 
         System.out.println("Digite o nome do funcionário:");
         String nome = sc.nextLine();
+        novoFuncionario.setNome(nome);
 
         System.out.println("Digite o nome de usuário para login:");
         String usuario = sc.nextLine();
+        novoFuncionario.setUsuario(usuario);
 
         System.out.println("Digite a senha para login:");
         String senha = sc.nextLine();
+        novoFuncionario.setSenha(senha);
 
         funcionarios.add(novoFuncionario);
 

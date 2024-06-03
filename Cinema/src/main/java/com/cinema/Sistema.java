@@ -7,6 +7,7 @@ import com.cinema.cine.Sessao;
 import com.cinema.cliente.Cliente;
 import com.cinema.func.Administrador;
 import com.cinema.func.Funcionario;
+import com.cinema.func.Login;
 import com.cinema.produto.Produto;
 import com.cinema.produto.Venda;
 
@@ -26,6 +27,7 @@ public class Sistema {
     Sessao sessao = new Sessao();
     Ingresso ingresso = new Ingresso();
     Venda venda = new Venda();
+    Login login = new Login();
 
     private static Sistema instance;
 
@@ -35,6 +37,7 @@ public class Sistema {
         }
         return instance;
     }
+
 
     private static void exibirInicio() {
         System.out.println("----------------------------------------------");
@@ -59,15 +62,18 @@ public class Sistema {
 
         switch (option) {
             case 1:
+                login.realizarLogin();
                 menuVendas();
                 break;
             case 2:
                 menuSessoes();
                 break;
             case 3:
+                login.realizarLoginAdmin();
                 // Implementar lógica de relatórios aqui
                 break;
             case 4:
+                login.realizarLoginAdmin();
                 menuCadastros();
                 break;
             case 5:

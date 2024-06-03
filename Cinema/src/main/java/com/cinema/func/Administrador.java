@@ -39,12 +39,15 @@ public class Administrador extends Funcionario {
         novoAdministrador.setIsAdm(true);
         System.out.print("Digite o nome do administrador: ");
         String nome = sca.nextLine();
+        novoAdministrador.setNome(nome);
 
         System.out.print("Digite o nome de usuário do administrador: ");
         String usuario = sca.nextLine();
+        novoAdministrador.setUsuario(usuario);
 
         System.out.print("Digite a senha do administrador: ");
         String senha = sca.nextLine();
+        novoAdministrador.setSenha(senha);
 
         administradores.add(novoAdministrador);
 

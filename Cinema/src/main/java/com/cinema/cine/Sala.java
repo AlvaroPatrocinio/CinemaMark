@@ -26,11 +26,11 @@ public class Sala {
 
     /**
      * Construtor da Sala.
-     * @param idsala O identificador único da sala.
+     * @param idSala O identificador único da sala.
      * @param capacidade A capacidade máxima de assentos da sala.
      */
-    public Sala(int idsala, int capacidade, String tipo, boolean status) {
-        this.idSala = idsala;
+    public Sala(int idSala, int capacidade, String tipo, boolean status) {
+        this.idSala = idSala;
         this.capacidade = capacidade;
         this.status = status;
     }
@@ -46,18 +46,20 @@ public class Sala {
 
         System.out.println("Digite o codigo da sala:");
         int idSala = sc.nextInt();
+        novaSala.setIdSala(idSala);
         sc.nextLine(); // Consumir a quebra de linha após nextInt()
-        novaSala.setIdsala(idSala);
+
 
         System.out.println("Digite a capacidade máxima de assentos da sala:");
         int capacidade = sc.nextInt();
-        sc.nextLine(); // Consumir a quebra de linha após nextInt()
         novaSala.setCapacidade(capacidade);
+        sc.nextLine(); // Consumir a quebra de linha após nextInt()
+
 
         System.out.println("A sala está em operação? (true/false):");
         boolean status = sc.nextBoolean();
-        sc.nextLine(); // Consumir a quebra de linha após nextBoolean()
         novaSala.setStatus(status);
+        sc.nextLine(); // Consumir a quebra de linha após nextBoolean()
 
         salas.add(novaSala);
 
@@ -67,7 +69,7 @@ public class Sala {
 
     public static Sala buscarSalaPorId(int id, List<Sala> salas) {
         for (Sala sala : salas) {
-            if (sala.getIdsala() == id) {
+            if (sala.getIdSala() == id) {
                 return sala;
             }
         }
@@ -78,15 +80,15 @@ public class Sala {
      * Obtém o identificador da sala.
      * @return O identificador da sala.
      */
-    public int getIdsala() {
+    public int getIdSala() {
         return idSala;
     }
 
     /**
      * Define o identificador da sala.
-     * @param idsala O novo identificador da sala.
+     * @param idSala O novo identificador da sala.
      */
-    public void setIdsala(int idsala) {
+    public void setIdSala(int idSala) {
         this.idSala = idSala;
     }
 
