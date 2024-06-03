@@ -1,6 +1,7 @@
 package com.cinema.cliente;
 
 import com.cinema.JsonCinema;
+import com.cinema.cine.Sessao;
 import com.cinema.produto.Produto;
 
 import java.util.ArrayList;
@@ -68,7 +69,15 @@ public class Cliente {
         JsonCinema.escreverObjeto(clientes, FILE_PATH );
         return novoCliente.toString();
     }
-    
+
+    public static Cliente buscarClientePorId(int id, List<Cliente> clientes) {
+        for (Cliente cliente : clientes) {
+            if (cliente.idCliente == id) {
+                return cliente;
+            }
+        }
+        return null;
+    }
     /** Questão 7. */
      /**
      * Edita as informações do cadastro do cliente.

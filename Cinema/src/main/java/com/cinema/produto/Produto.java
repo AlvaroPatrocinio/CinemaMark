@@ -1,5 +1,6 @@
 package com.cinema.produto;
 import com.cinema.JsonCinema;
+import com.google.gson.reflect.TypeToken;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -51,6 +52,7 @@ public class Produto {
 
     private static final String FILE_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/produtos.json";
 
+
     /**
      * Construtor padrão para criar um produto.
      */
@@ -59,7 +61,7 @@ public class Produto {
     }
 
     public static String cadastrarProduto(Produto produto){
-        
+
         Produto novoProduto = new Produto();
 
         novoProduto.setProdutoId(numProdutos++);

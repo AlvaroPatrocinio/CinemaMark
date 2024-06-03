@@ -1,28 +1,77 @@
 package com.cinema.cine;
 
+import com.cinema.JsonCinema;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 /**
  * Representa uma sala de cinema.
  */
 public class Sala {
     /** Identificador único da sala. */
-    private int idsala;
+    private int idSala;
 
     /** Capacidade máxima de assentos da sala. */
     private int capacidade;
 
-    /** Tipo da sala (ex: 2D, 3D, VIP, etc.). */
-    private String tipo;
+    /**Verifica se a sala esta disponivel */
+    private boolean status;
+
+    private static List<Sala> salas = new ArrayList<>();
+    private static Scanner sc = new Scanner(System.in);
+
+    private static final String FILE_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/salas.json";
 
     /**
      * Construtor da Sala.
      * @param idsala O identificador único da sala.
      * @param capacidade A capacidade máxima de assentos da sala.
-     * @param tipo O tipo da sala (ex: 2D, 3D, VIP, etc.).
      */
-    public Sala(int idsala, int capacidade, String tipo) {
-        this.idsala = idsala;
+    public Sala(int idsala, int capacidade, String tipo, boolean status) {
+        this.idSala = idsala;
         this.capacidade = capacidade;
-        this.tipo = tipo;
+        this.status = status;
+    }
+
+    // Iniciando construtor padrão
+    public Sala(){
+
+
+    }
+
+    public static String cadastrarSala(Sala sala){
+        Sala novaSala = new Sala();
+
+        System.out.println("Digite o codigo da sala:");
+        int idSala = sc.nextInt();
+        sc.nextLine(); // Consumir a quebra de linha após nextInt()
+        novaSala.setIdsala(idSala);
+
+        System.out.println("Digite a capacidade máxima de assentos da sala:");
+        int capacidade = sc.nextInt();
+        sc.nextLine(); // Consumir a quebra de linha após nextInt()
+        novaSala.setCapacidade(capacidade);
+
+        System.out.println("A sala está em operação? (true/false):");
+        boolean status = sc.nextBoolean();
+        sc.nextLine(); // Consumir a quebra de linha após nextBoolean()
+        novaSala.setStatus(status);
+
+        salas.add(novaSala);
+
+        JsonCinema.escreverObjeto(salas, FILE_PATH);
+        return novaSala.toString();
+    }
+
+    public static Sala buscarSalaPorId(int id, List<Sala> salas) {
+        for (Sala sala : salas) {
+            if (sala.getIdsala() == id) {
+                return sala;
+            }
+        }
+        return null;
     }
 
     /**
@@ -30,7 +79,7 @@ public class Sala {
      * @return O identificador da sala.
      */
     public int getIdsala() {
-        return idsala;
+        return idSala;
     }
 
     /**
@@ -38,7 +87,7 @@ public class Sala {
      * @param idsala O novo identificador da sala.
      */
     public void setIdsala(int idsala) {
-        this.idsala = idsala;
+        this.idSala = idSala;
     }
 
     /**
@@ -61,16 +110,16 @@ public class Sala {
      * Obtém o tipo da sala.
      * @return O tipo da sala.
      */
-    public String getTipo() {
-        return tipo;
+    public boolean isStatus() {
+        return status;
     }
 
     /**
      * Define o tipo da sala.
-     * @param tipo O novo tipo da sala.
+     * @param status O novo tipo da sala.
      */
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     /**
@@ -80,9 +129,8 @@ public class Sala {
     @Override
     public String toString() {
         return "Sala{" +
-                "idsala=" + idsala +
+                "idsala=" + idSala +
                 ", capacidade=" + capacidade +
-                ", tipo='" + tipo + '\'' +
                 '}';
     }
 }

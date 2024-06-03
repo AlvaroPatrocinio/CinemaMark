@@ -1,7 +1,10 @@
 package com.cinema.cine;
 
+import com.cinema.JsonCinema;
+import com.cinema.cliente.Cliente;
+import com.google.gson.reflect.TypeToken;
+
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -11,178 +14,141 @@ import java.util.Scanner;
  */
 public class Ingresso {
     private int idIngresso;  // Identificação única do ingresso
-    private String tipo;  // Tipo do ingresso (ex: inteiro, meia-entrada)
-    private Filme filme;  // Filme associado ao ingresso
-    private Sala sala;  // Sala onde o filme será exibido
-    private LocalDateTime dataHora;  // Data e hora do ingresso
+    private static Sessao sessao;
     private double preco;  // Preço do ingresso
+    private static Cliente cliente;
+
+    private static int proximoId = 0;
 
     private List<Ingresso> ingressos = new ArrayList<>();  // Lista de ingressos cadastrados
 
-    Scanner sc = new Scanner(System.in);  // Scanner para entrada de dados
+    private static Scanner scanner = new Scanner(System.in);  // Scanner para entrada de dados
+
+    private static final String SESSAO_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/sessoes.json";
+    private static final String CLIENTE_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/clientes.json";
+    private static final String VENDA_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/vendas.json";
+
 
     /**
      * Cadastrar um novo ingresso.
      * @param ingresso O ingresso a ser cadastrado.
      * @return Uma representação em String dos ingressos cadastrados.
      */
-    public String cadastrarIngresso(Ingresso ingresso) {
-        Ingresso novoIngresso = new Ingresso();  // Cria um novo ingresso
+    /**
+     * Método para comprar um ingresso.
+     */
+    public static void comprarIngresso() {
+        // Ler os clientes do arquivo JSON
+        List<Cliente> clientes = JsonCinema.lerObjeto(CLIENTE_PATH,new TypeToken<List<Cliente>>() {}.getType());
+        if (clientes == null || clientes.isEmpty()) {
+            System.out.println("Nenhum cliente cadastrado. Não é possível comprar ingressos.");
+            return;
+        }
 
-        // Captura e define os dados do novo ingresso
-        System.out.println("Digite a Identificação do ingresso: ");
-        int idIngresso = sc.nextInt();
-        novoIngresso.setIdIngresso(idIngresso);
+        // Exibir os clientes cadastrados
+        System.out.println("Clientes cadastrados:");
+        for (Cliente cliente : clientes) {
+            System.out.println(cliente);
+        }
 
-        System.out.println("Digite o tipo do ingresso: ");
-        sc.nextLine();
-        String tipo = sc.nextLine();
-        novoIngresso.setTipo(tipo);
+        System.out.println("Digite o ID do cliente que está comprando o ingresso: ");
+        int idCliente = scanner.nextInt();
+        Cliente clienteSelecionado = cliente.buscarClientePorId(idCliente, clientes);
+        if (clienteSelecionado == null) {
+            System.out.println("Cliente não encontrado. Não é possível comprar o ingresso.");
+            return;
+        }
 
-        System.out.println("Digite a data e a hora do filme (no formato yyyy-MM-dd HH:mm): ");
-        String dataHoraInput = sc.nextLine();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-        LocalDateTime dataHora = LocalDateTime.parse(dataHoraInput, formatter);
-        novoIngresso.setDataHora(dataHora);
+        // Ler as sessões disponíveis do arquivo JSON
+        List<Sessao> sessoes = JsonCinema.lerObjeto(SESSAO_PATH, new TypeToken<List<Sessao>>() {}.getType());
+        if (sessoes == null || sessoes.isEmpty()) {
+            System.out.println("Nenhuma sessão disponível. Não é possível comprar ingressos.");
+            return;
+        }
+        for (Sessao sessao : sessoes) {
+            System.out.println(sessao);
+        }
+
+        System.out.println("Digite o ID da sessão para a qual deseja comprar o ingresso: ");
+        int idSessao = scanner.nextInt();
+        Sessao sessaoSelecionada = sessao.buscarSessaoPorId(idSessao, sessoes);
+        if (sessaoSelecionada == null) {
+            System.out.println("Sessão não encontrada. Não é possível comprar o ingresso.");
+            return;
+        }
 
         System.out.println("Digite o preço do ingresso: ");
-        double preco = sc.nextDouble();
-        novoIngresso.setPreco(preco);
+        double preco = scanner.nextDouble();
 
-        System.out.println("Digite o Filme: ");
-        sc.nextLine(); // Consumir a quebra de linha deixada pelo nextDouble() antes de ler a string
-        String filme = sc.nextLine();
-        novoIngresso.setFilme(getFilme());
+        Ingresso ingresso = new Ingresso();
+        ingresso.setIdIngresso(proximoId++);
+        ingresso.setSessao(sessao);
+        ingresso.setPreco(preco);
+        ingresso.setCliente(cliente);
 
-        System.out.println("Digite a Sala do filme:");
-        int sala = sc.nextInt();
-        novoIngresso.setSala(getSala());
+        // Ler os ingressos do arquivo JSON
+        List<Ingresso> ingressos = JsonCinema.lerObjeto(VENDA_PATH, new TypeToken<List<Ingresso>>() {}.getType());
+        if (ingressos == null) {
+            ingressos = new ArrayList<>();
+        }
+        ingressos.add(ingresso);
 
-        ingressos.add(novoIngresso);  // Adiciona o ingresso à lista de ingressos
+        // Salvar os ingressos no arquivo JSON
+        JsonCinema.escreverObjeto(ingressos, VENDA_PATH);
 
-        return ingressos.toString();  // Retorna uma representação em String dos ingressos cadastrados
+        System.out.println("Ingresso comprado com sucesso!");
     }
 
     /**
      * Construtor para um ingresso com todos os atributos.
      */
-    public Ingresso(int idIngresso, String tipo, Filme filme, Sala sala, LocalDateTime dataHora, double preco) {
+
+    public Ingresso(int idIngresso, Sessao sessao ,double preco, Cliente cliente) {
         this.idIngresso = idIngresso;
-        this.tipo = tipo;
-        this.filme = filme;
-        this.sala = sala;
-        this.dataHora = dataHora;
+        this.sessao = sessao;
         this.preco = preco;
+        this.cliente = cliente;
     }
 
     /**
      * Construtor padrão para um ingresso.
      */
     public Ingresso() {
-        // Inicializa os atributos com valores padrão
-        this.idIngresso = idIngresso;
-        this.tipo = tipo;
-        this.filme = filme;
-        this.sala = sala;
-        this.dataHora = dataHora;
-        this.preco = preco;
+
     }
 
     // Getters e setters para os atributos da classe
 
-    /**
-     * Obtém a identificação do ingresso.
-     * @return A identificação do ingresso.
-     */
+
     public int getIdIngresso() {
         return idIngresso;
     }
 
-    /**
-     * Define a identificação do ingresso.
-     * @param idIngresso A identificação do ingresso a ser definida.
-     */
     public void setIdIngresso(int idIngresso) {
         this.idIngresso = idIngresso;
     }
 
-    /**
-     * Obtém o tipo do ingresso.
-     * @return O tipo do ingresso.
-     */
-    public String getTipo() {
-        return tipo;
+    public static Sessao getSessao() {
+        return sessao;
     }
 
-    /**
-     * Define o tipo do ingresso.
-     * @param tipo O tipo do ingresso a ser definido.
-     */
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public static void setSessao(Sessao sessao) {
+        Ingresso.sessao = sessao;
     }
 
-    /**
-     * Obtém o filme associado ao ingresso.
-     * @return O filme associado ao ingresso.
-     */
-    public Filme getFilme() {
-        return filme;
-    }
-
-    /**
-     * Define o filme associado ao ingresso.
-     * @param filme O filme associado ao ingresso a ser definido.
-     */
-    public void setFilme(Filme filme) {
-        this.filme = filme;
-    }
-
-    /**
-     * Obtém a sala onde o filme será exibido.
-     * @return A sala onde o filme será exibido.
-     */
-    public Sala getSala() {
-        return sala;
-    }
-
-    /**
-     * Define a sala onde o filme será exibido.
-     * @param sala A sala onde o filme será exibido a ser definida.
-     */
-    public void setSala(Sala sala) {
-        this.sala = sala;
-    }
-
-    /**
-     * Obtém a data e hora do ingresso.
-     * @return A data e hora do ingresso.
-     */
-    public LocalDateTime getDataHora() {
-        return dataHora;
-    }
-
-    /**
-     * Define a data e hora do ingresso.
-     * @param dataHora A data e hora do ingresso a ser definida.
-     */
-    public void setDataHora(LocalDateTime dataHora) {
-        this.dataHora = dataHora;
-    }
-
-    /**
-     * Obtém o preço do ingresso.
-     * @return O preço do ingresso.
-     */
     public double getPreco() {
         return preco;
     }
 
-    /**
-     * Define o preço do ingresso.
-     * @param preco O preço do ingresso a ser definido.
-     */
     public void setPreco(double preco) {
         this.preco = preco;
+    }
+
+    public static Cliente getCliente() {
+        return cliente;
+    }
+
+    public static void setCliente(Cliente cliente) {
+        Ingresso.cliente = cliente;
     }
 }

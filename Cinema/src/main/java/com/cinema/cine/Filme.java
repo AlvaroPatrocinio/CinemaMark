@@ -71,6 +71,14 @@ public class Filme {
         return novoFilme.toString();
     }
 
+    public static Filme buscarFilmePorId(int id, List<Filme> filmes) {
+        for (Filme filme : filmes) {
+            if (filme.getId() == id) {
+                return filme;
+            }
+        }
+        return null;
+    }
 
     /**
      * Obtém o nome do filme.
