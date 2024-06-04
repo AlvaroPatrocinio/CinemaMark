@@ -1,1 +1,1 @@
-[{"idIngresso":0,"preco":0.0,"ingressos":[]},{"idIngresso":0,"preco":50.0,"ingressos":[]}]
+[{"produto":{"nome":"vava","categoria":"123","dataValidade":"May 20, 2002, 12:00:00 AM","precoUnitario":20.0,"quantidadeEstoque":0,"produtoId":0},"quantidadeVendida":1,"cliente":{"idCliente":2,"nomeCompleto":"pelli","endereco":"pelli 555 bela vista","telefone":"4545454545","email":"pelli@pelli.com","cpf":"12332121321","preferencais":"Poo"},"tipoBalcao":"Balcão Automático"}]

@@ -12,14 +12,26 @@ public class Venda {
     private Produto produto;
     private int quantidadeVendida;
     private Cliente cliente;
+    private String tipoBalcao;
+
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    public Venda(Produto produto, int quantidadeVendida, Cliente cliente) {
+    public Venda(Produto produto, int quantidadeVendida, Cliente cliente, String tipoBalcao) {
         this.produto = produto;
         this.quantidadeVendida = quantidadeVendida;
         this.cliente = cliente;
+        this.tipoBalcao = tipoBalcao;
     }
+
+    public String getTipoBalcao() {
+        return tipoBalcao;
+    }
+
+    public void setTipoBalcao(String tipoBalcao) {
+        this.tipoBalcao = tipoBalcao;
+    }
+
 
     public Venda() {
     }
@@ -143,7 +155,8 @@ public class Venda {
                             JsonCinema.escreverObjeto(produtos, PRODUTO_PATH);
 
                             // Cria a venda e escreve no arquivo de vendas
-                            Venda venda = new Venda(produtoVendido, quantidadeVendida, clienteSelecionado);
+                            Venda venda = new Venda(produtoVendido, quantidadeVendida, clienteSelecionado, balcaoUtilizado);
+                            venda.setTipoBalcao(balcaoUtilizado);
                             List<Venda> vendas = new ArrayList<>();
                             vendas.add(venda);
 
