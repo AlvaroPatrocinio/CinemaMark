@@ -1,5 +1,7 @@
 package com.cinema;
 
+import com.cinema.balcao.BalcaoAut;
+import com.cinema.balcao.BalcaoFun;
 import com.cinema.cine.Filme;
 import com.cinema.cine.Ingresso;
 import com.cinema.cine.Sala;
@@ -28,6 +30,9 @@ public class Sistema {
     Ingresso ingresso = new Ingresso();
     Venda venda = new Venda();
     Login login = new Login();
+    BalcaoFun balcaoFun = new BalcaoFun();
+    BalcaoAut balcaoAut = new BalcaoAut();
+    Relatorio relatorio = new Relatorio();
 
     private static Sistema instance;
 
@@ -70,7 +75,7 @@ public class Sistema {
                 break;
             case 3:
                 login.realizarLoginAdmin();
-                // Implementar lógica de relatórios aqui
+                menuRelatorios();
                 break;
             case 4:
                 login.realizarLoginAdmin();
@@ -105,18 +110,19 @@ public class Sistema {
                 System.out.println("--------Ingresso Comprado com Sucesso---------");
                 System.out.println("----------------------------------------------");
                 System.out.println("----------------------------------------------");
-                menuadm();
+                menuVendas();
                 break;
 
             case 2:
                 venda.realizarVenda();
+                menuVendas();
                 break;
             case 3:
                 menuadm();
                 break;
             default:
                 System.out.println("------------Opção Inválida!------------");
-                menuSessoes();
+                menuVendas();
                 break;
         }
     }
@@ -139,7 +145,7 @@ public class Sistema {
                 System.out.println("--------Sessão Selecionada com Sucesso--------");
                 System.out.println("----------------------------------------------");
                 System.out.println("----------------------------------------------");
-                menuadm();
+                menuSessoes();
                 break;
             case 2:
                 menuadm();
@@ -147,6 +153,33 @@ public class Sistema {
             default:
                 System.out.println("------------Opção Inválida!------------");
                 menuSessoes();
+                break;
+        }
+    }
+
+    private void menuRelatorios() {
+        exibirInicio();
+        System.out.println("----------------------------------------------");
+        System.out.println("----------------------------------------------");
+        System.out.println("**********Selecione a Opção desejada**********");
+        System.out.println("----------------------------------------------");
+        System.out.println("/    Opção 1 - Exibir Relatório       /");
+        System.out.println("/    Opção 2 - Menu Anterior     /");
+
+
+        int option1 = input2.nextInt();
+        switch (option1) {
+            case 1:
+                relatorio.exibirRelatorio();
+                System.out.println("----------------------------------------------");
+                System.out.println("--------Relatorio Exibido com Sucesso---------");
+                System.out.println("----------------------------------------------");
+                System.out.println("----------------------------------------------");
+                menuRelatorios();
+                break;
+
+            case 2:
+                menuadm();
                 break;
         }
     }
@@ -163,7 +196,9 @@ public class Sistema {
         System.out.println("/    Opção 5 - Cadastro de Administrador     /");
         System.out.println("/    Opção 6 - Cadastro de Salas     /");
         System.out.println("/    Opção 7 - Cadastro de Sessões     /");
-        System.out.println("/    Opção 8 - Menu Anterior     /");
+        System.out.println("/    Opção 8 - Cadastro de Balcão com Funcionario     /");
+        System.out.println("/    Opção 9 - Cadastro de Balcão Automatico     /");
+        System.out.println("/    Opção 10 - Menu Anterior     /");
 
         int option4 = input2.nextInt();
         switch (option4) {
@@ -224,6 +259,22 @@ public class Sistema {
                 menuCadastros();
                 break;
             case 8:
+                balcaoFun.cadastrarBalcao();
+                System.out.println("----------------------------------------------");
+                System.out.println("--------Sessão Cadastrada com Sucesso---------");
+                System.out.println("----------------------------------------------");
+                System.out.println("----------------------------------------------");
+                menuCadastros();
+                break;
+            case 9:
+                balcaoAut.cadastrarBalcao();
+                System.out.println("----------------------------------------------");
+                System.out.println("--------Sessão Cadastrada com Sucesso---------");
+                System.out.println("----------------------------------------------");
+                System.out.println("----------------------------------------------");
+                menuCadastros();
+                break;
+            case 10:
                 menuadm();
                 break;
             default:

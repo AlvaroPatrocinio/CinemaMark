@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Sessao {
 
     private int codSessao;
-    private static Filme filme;
+    private Filme filme;
     private Sala sala;
     private String dataHora;
 
@@ -95,6 +95,7 @@ public class Sessao {
         Filme filmeSelecionado = Filme.buscarFilmePorId(idFilme, filmes);
         if (filmeSelecionado == null) {
             System.out.println("Filme não encontrado.");
+            return; // Se o filme não for encontrado, encerra o método
         }
 
         System.out.println("Selecione uma sala:");
@@ -132,8 +133,8 @@ public class Sessao {
         } while (true);
     }
 
-    public static Sessao buscarSessaoPorId(int id, List<Sessao> sesoess) {
-        for (Sessao sessao : sesoess) {
+    public static Sessao buscarSessaoPorId(int id, List<Sessao> sessoes) {
+        for (Sessao sessao : sessoes) {
             if (sessao.getCodSessao() == id) {
                 return sessao;
             }

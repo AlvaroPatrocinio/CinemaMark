@@ -8,9 +8,6 @@ atributos;
 
 
 
-10. Cada venda efetuada vai gerar um extrato que deverá ser impresso e salvo junto
-com a informação do cliente que fez a compra.
-
 13. Implementar a interface Comparator para as classes Filme e Venda e fazer
 comparações por diferentes atributos.
 

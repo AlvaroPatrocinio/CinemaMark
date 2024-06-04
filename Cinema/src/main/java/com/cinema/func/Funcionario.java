@@ -1,6 +1,8 @@
 package com.cinema.func;
 
 import com.cinema.JsonCinema;
+import com.cinema.balcao.BalcaoFun;
+import com.google.gson.reflect.TypeToken;
 
 import java.util.List;
 import java.util.Scanner;
@@ -15,12 +17,14 @@ public class Funcionario {
     private String nome; // Nome do funcionário
     private String usuario; // Nome de usuário para login
     private String senha; // Senha para login
+    private BalcaoFun balcaoFun;
 
     private static List<Funcionario> funcionarios = new ArrayList<>();
     private static Scanner sc = new Scanner(System.in);
     private static int proximoId = 1;
 
     private static final String FILE_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/funcionarios.json";
+    private static final String BALCAO_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/balcoesFun.json";
 
     /**
      * Construtor para inicializar um Funcionario com informações completas.
@@ -30,6 +34,14 @@ public class Funcionario {
      * @param usuario O nome de usuário para login
      * @param senha A senha para login
      */
+    public Funcionario(int idFuncionario, String nome, String usuario, String senha, BalcaoFun balcaoFun) {
+        this.idFuncionario = idFuncionario;
+        this.nome = nome;
+        this.usuario = usuario;
+        this.senha = senha;
+        this.balcaoFun = balcaoFun;
+    }
+
     public Funcionario(int idFuncionario, String nome, String usuario, String senha) {
         this.idFuncionario = idFuncionario;
         this.nome = nome;
@@ -117,6 +129,14 @@ public class Funcionario {
         this.senha = senha;
     }
 
+    public BalcaoFun getBalcaoFun() {
+        return balcaoFun;
+    }
+
+    public void setBalcaoFun(BalcaoFun balcaoFun) {
+        this.balcaoFun = balcaoFun;
+    }
+
     @Override
     public String toString() {
         return "Funcionario{" +
@@ -124,6 +144,7 @@ public class Funcionario {
                 ", nome='" + nome + '\'' +
                 ", usuario='" + usuario + '\'' +
                 ", senha='" + senha + '\'' +
+                ", balcaoFun='" + balcaoFun + '\'' +
                 '}';
     }
 
@@ -144,12 +165,43 @@ public class Funcionario {
         String senha = sc.nextLine();
         novoFuncionario.setSenha(senha);
 
-        funcionarios.add(novoFuncionario);
+        // Carrega os balcões do arquivo JSON
+        List<BalcaoFun> balcoes = JsonCinema.lerObjeto(BALCAO_PATH, new TypeToken<List<BalcaoFun>>() {}.getType());
 
-        JsonCinema.escreverObjeto(funcionarios, FILE_PATH);
+        if (balcoes != null) {
+            System.out.println("Balcões carregados com sucesso.");
+            System.out.println("Lista de balcões disponíveis:");
+            for (BalcaoFun balcao : balcoes) {
+                System.out.println("Balcão " + balcao.getIdBalcao());
+            }
 
-        System.out.println("Funcionário cadastrado com sucesso!");
-        //System.out.println(novoFuncionario);
+            System.out.println("Digite o ID do balcão do funcionário:");
+            int balcaoId = sc.nextInt();
+            sc.nextLine(); // Limpar o buffer do scanner
+
+            BalcaoFun balcaoSelecionado = null;
+            // Busca o balcão pelo ID
+            for (BalcaoFun balcao : balcoes) {
+                if (balcao.getIdBalcao() == balcaoId) {
+                    balcaoSelecionado = balcao;
+                    break;
+                }
+            }
+
+            if (balcaoSelecionado != null) {
+                novoFuncionario.setBalcaoFun(balcaoSelecionado);
+
+                funcionarios.add(novoFuncionario);
+
+                JsonCinema.escreverObjeto(funcionarios, FILE_PATH);
+
+                System.out.println("Funcionário cadastrado com sucesso!");
+            } else {
+                System.out.println("Balcão não encontrado.");
+            }
+        } else {
+            System.out.println("Erro ao carregar balcões. Verifique o caminho do arquivo e a estrutura do JSON.");
+        }
     }
 
     public static void selecionarFuncionario() {
@@ -170,6 +222,4 @@ public class Funcionario {
     public static List<Funcionario> getFuncionarios() {
         return funcionarios;
     }
-
-
 }

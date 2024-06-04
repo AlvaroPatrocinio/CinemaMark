@@ -1,9 +1,19 @@
 package com.cinema.balcao;
 
+import com.cinema.JsonCinema;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 /**
  * Representa um balcão automatico de atendimento no cinema.
  */
 public class BalcaoAut {
+
+    private static final String BALCAO_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/balcoesAut.json";
+    private static List<BalcaoAut> balcoes = new ArrayList<>();
+    private static Scanner sc = new Scanner(System.in);
 
     /** Identificador único do balcão */
     private int idBalcao;
@@ -14,6 +24,10 @@ public class BalcaoAut {
      */
     public BalcaoAut(int idBalcao) {
         this.idBalcao = idBalcao;
+    }
+
+    public BalcaoAut() {
+
     }
 
     /**
@@ -41,5 +55,20 @@ public class BalcaoAut {
         return "BalcaoAut{" +
                 "idBalcao=" + idBalcao +
                 '}';
+    }
+
+    public static void cadastrarBalcao() {
+        BalcaoAut novoBalcaoAut = new BalcaoAut();
+
+        System.out.println("Digite o ID do balcão:");
+        int idBalcao = sc.nextInt();
+        sc.nextLine(); // Limpar o buffer do scanner
+        novoBalcaoAut.setIdBalcao(idBalcao);
+
+        balcoes.add(novoBalcaoAut);
+
+        JsonCinema.escreverObjeto(balcoes, BALCAO_PATH);
+
+        System.out.println("Balcão cadastrado com sucesso!");
     }
 }

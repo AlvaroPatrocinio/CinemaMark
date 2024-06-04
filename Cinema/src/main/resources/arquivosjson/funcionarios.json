@@ -1,1 +1,1 @@
-[{"idFuncionario":1,"nome":"carlos","usuario":"car.los","senha":"444"},{"idFuncionario":2,"nome":"pedro","usuario":"pe.dro","senha":"678"},{"idFuncionario":3,"nome":"julia","usuario":"ju.lia","senha":"4568"},{"idFuncionario":4,"nome":"vanessa","usuario":"van.essa","senha":"123"}]
+[{"idFuncionario":1,"nome":"igo","usuario":"i.go","senha":"444","balcaoFun":{"idBalcao":1}},{"idFuncionario":2,"nome":"gui","usuario":"gu.i","senha":"555","balcaoFun":{"idBalcao":2}},{"idFuncionario":3,"nome":"ju","usuario":"j.u","senha":"222","balcaoFun":{"idBalcao":3}}]
