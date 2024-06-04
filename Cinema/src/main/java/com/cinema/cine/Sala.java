@@ -22,8 +22,8 @@ public class Sala {
     private static List<Sala> salas = new ArrayList<>();
     private static Scanner sc = new Scanner(System.in);
 
-    private static final String FILE_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/salas.json";
-
+    //private static final String FILE_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/salas.json";
+    private static final String FILE_PATH = "C:\\Users\\Álvaro Soares\\Documents\\GitHub\\CineMark\\CineMark\\CinemaMark\\Cinema\\src\\main\\resources\\arquivosjson\\salas.json";
     /**
      * Construtor da Sala.
      * @param idSala O identificador único da sala.

@@ -28,7 +28,8 @@ public class Cliente {
     /** Número total de clientes criados, acessível mesmo por classes derivadas. */
     protected static int numClientes2 = 0;
 
-    private static final String FILE_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/clientes.json";
+    //private static final String FILE_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/clientes.json";
+    private static final String FILE_PATH = "C:\\Users\\Álvaro Soares\\Documents\\GitHub\\CineMark\\CineMark\\CinemaMark\\Cinema\\src\\main\\resources\\arquivosjson\\clientes.json";
 
     /** Inicializando lista de clientes */
     private static List<Cliente> clientes = new ArrayList<>();

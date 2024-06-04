@@ -15,8 +15,8 @@ public class Administrador extends Funcionario {
     private static int proximoId = 1;
     private static List<Administrador> administradores = new ArrayList<>();
 
-    private static final String FILE_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/admins.json";
-
+    //private static final String FILE_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/admins.json";
+    private static final String FILE_PATH = "C:\\Users\\Álvaro Soares\\Documents\\GitHub\\CineMark\\CineMark\\CinemaMark\\Cinema\\src\\main\\resources\\arquivosjson\\admins.json";
 
     /**
      * Construtor para criar um novo administrador com informações básicas.

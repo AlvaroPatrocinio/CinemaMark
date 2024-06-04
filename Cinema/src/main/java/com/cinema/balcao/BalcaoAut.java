@@ -11,7 +11,9 @@ import java.util.Scanner;
  */
 public class BalcaoAut {
 
-    private static final String BALCAO_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/balcoesAut.json";
+    //private static final String BALCAO_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/balcoesAut.json";
+    private static final String BALCAO_PATH = "C:\\Users\\Álvaro Soares\\Documents\\GitHub\\CineMark\\CineMark\\CinemaMark\\Cinema\\src\\main\\resources\\arquivosjson\\arquivosjson\\balcoesAut.json";
+
     private static List<BalcaoAut> balcoes = new ArrayList<>();
     private static Scanner sc = new Scanner(System.in);
 
