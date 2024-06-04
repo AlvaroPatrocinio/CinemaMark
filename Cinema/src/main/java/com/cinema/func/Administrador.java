@@ -54,6 +54,48 @@ public class Administrador extends Funcionario {
         JsonCinema.escreverObjeto(administradores, FILE_PATH);
     }
 
+    
+    private static Administrador buscarAdministradorPorId(int id) {
+        for (Administrador administrador : administradores) {
+            if (administrador.getIdFuncionario() == id) {
+                return administrador;
+            }
+        }
+        return null;
+    }
+
+
+    public static void alterarCadastroAdministrador() {
+        Scanner sca = new Scanner(System.in);
+
+        System.out.print("Digite o ID do administrador que deseja alterar: ");
+        int idAdministrador = sca.nextInt();
+        sca.nextLine();
+
+        // Buscar o administrador pelo ID
+        Administrador administrador = buscarAdministradorPorId(idAdministrador);
+
+        if (administrador != null) {
+            System.out.println("Administrador encontrado. Digite os novos dados:");
+
+            System.out.print("Novo nome: ");
+            String novoNome = sca.nextLine();
+            administrador.setNome(novoNome);
+
+            System.out.print("Novo nome de usuário: ");
+            String novoUsuario = sca.nextLine();
+            administrador.setUsuario(novoUsuario);
+
+            System.out.print("Nova senha: ");
+            String novaSenha = sca.nextLine();
+            administrador.setSenha(novaSenha);
+
+            System.out.println("Cadastro do administrador alterado com sucesso.");
+        } else {
+            System.out.println("Nenhum administrador encontrado com o ID fornecido.");
+        }
+    }
+
     /**
      * Construtor padrão para criar um administrador sem especificar informações.
      */

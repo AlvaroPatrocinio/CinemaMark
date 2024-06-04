@@ -225,4 +225,45 @@ public class Funcionario {
     public static List<Funcionario> getFuncionarios() {
         return funcionarios;
     }
+
+    private static Funcionario buscarFuncionarioPorId(int id) {
+        for (Funcionario funcionario : funcionarios) {
+            if (funcionario.getIdFuncionario() == id) {
+                return funcionario;
+            }
+        }
+        return null;
+    }
+
+    public static void alterarCadastroFuncionario() {
+        Scanner scfa = new Scanner(System.in);
+    
+        System.out.print("Digite o ID do funcionário que deseja alterar: ");
+        int idFuncionario = scfa.nextInt();
+        scfa.nextLine(); // Limpar o buffer do scanner
+    
+        // Buscar o funcionário pelo ID
+        Funcionario funcionario = buscarFuncionarioPorId(idFuncionario);
+    
+        if (funcionario != null) {
+            System.out.println("Funcionário encontrado. Digite os novos dados:");
+    
+            System.out.print("Novo nome: ");
+            String novoNome = scfa.nextLine();
+            funcionario.setNome(novoNome);
+    
+            System.out.print("Novo nome de usuário: ");
+            String novoUsuario = scfa.nextLine();
+            funcionario.setUsuario(novoUsuario);
+    
+            System.out.print("Nova senha: ");
+            String novaSenha = scfa.nextLine();
+            funcionario.setSenha(novaSenha);
+    
+            System.out.println("Cadastro do funcionário alterado com sucesso.");
+        } else {
+            System.out.println("Nenhum funcionário encontrado com o ID fornecido.");
+        }
+    }
+    
 }

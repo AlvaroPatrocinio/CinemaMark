@@ -1,8 +1,6 @@
 package com.cinema;
-
 import com.cinema.produto.Venda;
 import com.google.gson.reflect.TypeToken;
-
 import java.util.ArrayList;
 import java.util.List;
 

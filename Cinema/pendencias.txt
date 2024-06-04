@@ -1,11 +1,7 @@
-
-
-
 5. O sistema deverá armazenar de forma estática os 5 balcões do cinema.
 
 6. Deve ser possível cadastrar os colaboradores no sistema, alterar ou editar seus
-atributos;
-
+atributos; (Corrigir a alteração para buscar no json)
 
 
 13. Implementar a interface Comparator para as classes Filme e Venda e fazer
