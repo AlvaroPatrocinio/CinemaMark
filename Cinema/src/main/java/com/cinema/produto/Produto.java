@@ -1,7 +1,5 @@
 package com.cinema.produto;
 import com.cinema.JsonCinema;
-import com.google.gson.reflect.TypeToken;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -47,10 +45,10 @@ public class Produto {
         this.dataValidade = dataValidade;
         this.precoUnitario = precoUnitario;
         this.quantidadeEstoque = quantidadeEstoque;
-        this.produtoId = numProdutos++;
+        this.produtoId = numProdutos++; //Questão número 12: Criar um método de classe para classe Sistema que deverá retornar quantas instâncias foram criadas dos tipos Cliente e Produtos;
     }
 
-   //private static final String FILE_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/produtos.json";
+    //Questão número 14: Salve e recupere todas as informações dos Clientes, Filmes, Produtos, Vendas, colaboradores e Estoque em um arquivo de texto.
    private static final String FILE_PATH = "C:\\Users\\Álvaro Soares\\Documents\\GitHub\\CineMark\\CineMark\\CinemaMark\\Cinema\\src\\main\\resources\\arquivosjson\\produtos.json";
 
     /**

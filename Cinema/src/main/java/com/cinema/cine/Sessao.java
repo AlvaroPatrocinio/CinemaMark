@@ -1,27 +1,31 @@
 package com.cinema.cine;
-
 import com.cinema.JsonCinema;
 import com.google.gson.reflect.TypeToken;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Sessao {
 
-    private int codSessao;
-    private Filme filme;
-    private Sala sala;
-    private String dataHora;
+    private int codSessao; // O código único da sessão
+    private Filme filme; // O filme exibido na sessão
+    private Sala sala; // A sala onde a sessão ocorre
+    private String dataHora; // A data e hora da sessão
+
 
     // Caminhos dos arquivos JSON
-    //private static final String FILME_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/filmes.json";
-    //private static final String SALA_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/salas.json";
-    //private static final String SESSAO_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/sessoes.json";
     private static final String FILME_PATH = "C:\\Users\\Álvaro Soares\\Documents\\GitHub\\CineMark\\CineMark\\CinemaMark\\Cinema\\src\\main\\resources\\arquivosjson\\filmes.json";
     private static final String SALA_PATH = "C:\\Users\\Álvaro Soares\\Documents\\GitHub\\CineMark\\CineMark\\CinemaMark\\Cinema\\src\\main\\resources\\arquivosjson\\salas.json";
     private static final String SESSAO_PATH = "C:\\Users\\Álvaro Soares\\Documents\\GitHub\\CineMark\\CineMark\\CinemaMark\\Cinema\\src\\main\\resources\\arquivosjson\\sessoes.json";
 
+
+    /**
+     * Construtor para criar uma nova sessão.
+     * @param codSessao O código único da sessão
+     * @param filme O filme exibido na sessão
+     * @param sala A sala onde a sessão ocorre
+     * @param dataHora A data e hora da sessão
+     */
     public Sessao(int codSessao, Filme filme, Sala sala, String dataHora) {
         this.codSessao = codSessao;
         this.filme = filme;
@@ -66,6 +70,11 @@ public class Sessao {
         this.sala = sala;
     }
 
+
+    /**
+     * Retorna uma representação ToString
+     * @return Uma string representando a sessão.
+     */
     @Override
     public String toString() {
         return "Sessao{" +
@@ -76,6 +85,9 @@ public class Sessao {
                 '}';
     }
 
+    /**
+     * Método para cadastrar uma nova sessão.
+     */
     public static void cadastrarSessao() {
         Scanner scanner = new Scanner(System.in);
 
@@ -135,6 +147,12 @@ public class Sessao {
         } while (true);
     }
 
+    /**
+     * Método para buscar uma sessão pelo ID.
+     * @param id O ID da sessão a ser buscada.
+     * @param sessoes A lista de sessões onde será feita a busca.
+     * @return A sessão encontrada ou null se não for encontrada.
+     */
     public static Sessao buscarSessaoPorId(int id, List<Sessao> sessoes) {
         for (Sessao sessao : sessoes) {
             if (sessao.getCodSessao() == id) {
@@ -144,6 +162,9 @@ public class Sessao {
         return null;
     }
 
+    /**
+     * Método para visualizar todas as sessões cadastradas.
+     */
     public static void visualizarSessoes() {
         List<Sessao> sessoes = JsonCinema.lerObjeto(SESSAO_PATH     , new TypeToken<List<Sessao>>() {}.getType());
         if (sessoes == null || sessoes.isEmpty()) {

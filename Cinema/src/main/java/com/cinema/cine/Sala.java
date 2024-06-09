@@ -1,7 +1,5 @@
 package com.cinema.cine;
-
 import com.cinema.JsonCinema;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -22,7 +20,6 @@ public class Sala {
     private static List<Sala> salas = new ArrayList<>();
     private static Scanner sc = new Scanner(System.in);
 
-    //private static final String FILE_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/salas.json";
     private static final String FILE_PATH = "C:\\Users\\Álvaro Soares\\Documents\\GitHub\\CineMark\\CineMark\\CinemaMark\\Cinema\\src\\main\\resources\\arquivosjson\\salas.json";
     /**
      * Construtor da Sala.

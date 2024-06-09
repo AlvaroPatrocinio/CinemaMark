@@ -1,16 +1,15 @@
 package com.cinema;
-
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.List;
-import java.util.ArrayList;
 
+
+//Questão número 9: Os produtos, filmes e os clientes devem ser salvos de forma dinâmica no sistema
 public class JsonCinema {
+
     private static final Gson gson = new Gson();
 
     public static <T> void escreverObjeto(List<T> objetos, String filePath) {

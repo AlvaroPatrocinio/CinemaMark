@@ -1,9 +1,6 @@
 package com.cinema.cliente;
-
 import com.cinema.JsonCinema;
-import com.cinema.cine.Sessao;
 import com.cinema.produto.Produto;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -28,14 +25,14 @@ public class Cliente {
     /** Número total de clientes criados, acessível mesmo por classes derivadas. */
     protected static int numClientes2 = 0;
 
-    //private static final String FILE_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/clientes.json";
+    //Questão número 14: Salve e recupere todas as informações dos Clientes, Filmes, Produtos, Vendas, colaboradores e Estoque em um arquivo de texto.
     private static final String FILE_PATH = "C:\\Users\\Álvaro Soares\\Documents\\GitHub\\CineMark\\CineMark\\CinemaMark\\Cinema\\src\\main\\resources\\arquivosjson\\clientes.json";
 
     /** Inicializando lista de clientes */
     private static List<Cliente> clientes = new ArrayList<>();
     private static Scanner sc = new Scanner(System.in);
 
-    /** Questão 7. */
+    /** Questão 6. */
     /**
      * Cadastra um novo cliente no sistema.
      * @param cliente O cliente a ser cadastrado.
@@ -95,7 +92,7 @@ public class Cliente {
     }
 
     /**
-     * Construtor padrão para criar um cliente.
+     * Construtor padrão para criar um cliente. Questão número 12: Criar um método de classe para classe Sistema que deverá retornar quantas instâncias foram criadas dos tipos Cliente e Produtos;
      */
     public Cliente() {
         this.idCliente = numClientes++;

@@ -67,6 +67,7 @@ public class Sistema {
 
         switch (option) {
             case 1:
+                //Questão número 10: Cada venda efetuada vai gerar um extrato que deverá ser impresso e salvo junto com a informação do cliente que fez a compra
                 login.realizarLogin();
                 menuVendas();
                 break;
@@ -91,6 +92,8 @@ public class Sistema {
                 break;
         }
     }
+
+    //Questão número 10: Cada venda efetuada vai gerar um extrato que deverá ser impresso e salvo junto com a informação do cliente que fez a compra.
     private void menuVendas(){
         exibirInicio();
         System.out.println("----------------------------------------------");
@@ -170,6 +173,7 @@ public class Sistema {
         int option1 = input2.nextInt();
         switch (option1) {
             case 1:
+                //Questçao número 8: Verificar e imprimir dados das vendas e dos clientes;
                 relatorio.exibirRelatorio();
                 System.out.println("----------------------------------------------");
                 System.out.println("--------Relatorio Exibido com Sucesso---------");
@@ -219,6 +223,7 @@ public class Sistema {
                 menuCadastros();
                 break;
             case 3:
+                //Questão número 7: Cadastrar, alterar ou excluir clientes;
                 cliente.cadastrarCliente(cliente);
                 System.out.println("----------------------------------------------");
                 System.out.println("--------Cliente Cadastrado com Sucesso--------");
@@ -227,6 +232,7 @@ public class Sistema {
                 menuCadastros();
                 break;
             case 4:
+                //Questão número 6: Deve ser possível cadastrar os colaboradores no sistema, alterar ou editar seusatributos;
                 funcionario.cadastrarFuncionario();
                 System.out.println("----------------------------------------------");
                 System.out.println("--------Funcionário Cadastrado com Sucesso----");

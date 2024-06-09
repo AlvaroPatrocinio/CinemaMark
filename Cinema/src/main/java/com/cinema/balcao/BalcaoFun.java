@@ -1,8 +1,5 @@
 package com.cinema.balcao;
-
 import com.cinema.JsonCinema;
-import com.cinema.func.Funcionario;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -12,7 +9,7 @@ import java.util.Scanner;
  */
 public class BalcaoFun extends BalcaoAut {
 
-    //private static final String BALCAO_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/balcoesFun.json";
+
     private static final String BALCAO_PATH = "C:\\Users\\Álvaro Soares\\Documents\\GitHub\\CineMark\\CineMark\\CinemaMark\\Cinema\\src\\main\\resources\\arquivosjson\\arquivosjson\\balcoesFun.json";
     private static List<BalcaoFun> balcoes = new ArrayList<>();
     private static Scanner sc = new Scanner(System.in);

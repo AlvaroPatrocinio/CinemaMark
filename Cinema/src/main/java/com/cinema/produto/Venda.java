@@ -9,14 +9,22 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Venda {
-    private Produto produto;
-    private int quantidadeVendida;
-    private Cliente cliente;
-    private String tipoBalcao;
+    private Produto produto; // Produto vendido
+    private int quantidadeVendida; // Quantidade vendida do produto
+    private Cliente cliente; // Cliente que realizou a compra
+    private String tipoBalcao; // Tipo de balcão utilizado para a venda
 
 
     private static final Scanner scanner = new Scanner(System.in);
 
+    /**
+     * Construtor para criar uma nova venda com todos os detalhes especificados.
+     *
+     * @param produto           O produto vendido.
+     * @param quantidadeVendida A quantidade vendida do produto.
+     * @param cliente           O cliente que realizou a compra.
+     * @param tipoBalcao        O tipo de balcão utilizado para a venda.
+     */
     public Venda(Produto produto, int quantidadeVendida, Cliente cliente, String tipoBalcao) {
         this.produto = produto;
         this.quantidadeVendida = quantidadeVendida;
@@ -24,49 +32,87 @@ public class Venda {
         this.tipoBalcao = tipoBalcao;
     }
 
+    /**
+     * Retorna o tipo de balcão utilizado para a venda.
+     *
+     * @return O tipo de balcão.
+     */
     public String getTipoBalcao() {
         return tipoBalcao;
     }
 
+    /**
+     * Define o tipo de balcão utilizado para a venda.
+     *
+     * @param tipoBalcao O novo tipo de balcão.
+     */
     public void setTipoBalcao(String tipoBalcao) {
         this.tipoBalcao = tipoBalcao;
     }
 
 
+     /**
+     * Construtor padrão para criar uma venda.
+     */
     public Venda() {
     }
 
+    /**
+     * Retorna o produto vendido.
+     *
+     * @return O produto vendido.
+     */
     public Produto getProduto() {
         return produto;
     }
 
+     /**
+     * Define o produto vendido.
+     *
+     * @param produto O novo produto vendido.
+     */
     public void setProduto(Produto produto) {
         this.produto = produto;
     }
 
+     /**
+     * Retorna a quantidade vendida do produto.
+     *
+     * @return A quantidade vendida.
+     */
     public int getQuantidadeVendida() {
         return quantidadeVendida;
     }
 
+    /**
+     * Define a quantidade vendida do produto.
+     *
+     * @param quantidadeVendida A nova quantidade vendida.
+     */
     public void setQuantidadeVendida(int quantidadeVendida) {
         this.quantidadeVendida = quantidadeVendida;
     }
 
+    /**
+     * Retorna o cliente que realizou a compra.
+     *
+     * @return O cliente.
+     */
     public Cliente getCliente() {
         return cliente;
     }
 
+    /**
+     * Define o cliente que realizou a compra.
+     *
+     * @param cliente O novo cliente.
+     */
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
 
-    //private static final String VENDA_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/vendas.json";
-    //private static final String PRODUTO_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/produtos.json";
-    //private static final String CLIENTE_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/clientes.json";
-
-    //private static final String BALCAOAUT_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/balcaoAut.json";
-    //private static final String BALCAOFUN_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/funcionarios.json";
-
+    //Questão número 14: Salve e recupere todas as informações dos Clientes, Filmes, Produtos, Vendas, colaboradores e Estoque em um arquivo de texto.
+    //Caminhos JSON
     private static final String VENDA_PATH = "C:\\Users\\Álvaro Soares\\Documents\\GitHub\\CineMark\\CineMark\\CinemaMark\\Cinema\\src\\main\\resources\\arquivosjson\\vendas.json";
     private static final String PRODUTO_PATH = "C:\\Users\\Álvaro Soares\\Documents\\GitHub\\CineMark\\CineMark\\CinemaMark\\Cinema\\src\\main\\resources\\arquivosjson\\produtos.json";
     private static final String CLIENTE_PATH = "C:\\Users\\Álvaro Soares\\Documents\\GitHub\\CineMark\\CineMark\\CinemaMark\\Cinema\\src\\main\\resources\\arquivosjson\\clientes.json";
@@ -76,6 +122,9 @@ public class Venda {
 
 
 
+    /**
+     * Realiza uma venda, solicitando detalhes ao usuário.
+     */
     public static void realizarVenda() {
 
         System.out.println("Selecione o tipo de balcão:");
@@ -156,6 +205,7 @@ public class Venda {
 
                             // Cria a venda e escreve no arquivo de vendas
                             Venda venda = new Venda(produtoVendido, quantidadeVendida, clienteSelecionado, balcaoUtilizado);
+                            //Questão número 5: O sistema deverá armazenar de forma estática os 5 balcões do cinema.
                             venda.setTipoBalcao(balcaoUtilizado);
                             List<Venda> vendas = new ArrayList<>();
                             vendas.add(venda);
@@ -181,6 +231,11 @@ public class Venda {
         }
     }
 
+     /**
+     * Retorna uma representação em string do objeto Venda.
+     *
+     * @return Uma string que representa o objeto Venda.
+     */
     @Override
     public String toString() {
         return "Venda{" +

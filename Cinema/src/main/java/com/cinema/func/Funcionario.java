@@ -3,13 +3,12 @@ package com.cinema.func;
 import com.cinema.JsonCinema;
 import com.cinema.balcao.BalcaoFun;
 import com.google.gson.reflect.TypeToken;
-
 import java.util.List;
 import java.util.Scanner;
 import java.util.ArrayList;
 
 /**
- * Representa um funcionário do cinema.
+ * Representa um funcionário do cinema, questão número 2: O sistema será utilizado pelos colaboradores e pelo administrador.
  */
 public class Funcionario {
 
@@ -23,8 +22,7 @@ public class Funcionario {
     private static Scanner sc = new Scanner(System.in);
     private static int proximoId = 1;
 
-    //private static final String FILE_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/funcionarios.json";
-    //private static final String BALCAO_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/balcoesFun.json";
+    //Questão número 14: Salve e recupere todas as informações dos Clientes, Filmes, Produtos, Vendas, colaboradores e Estoque em um arquivo de texto.
     private static final String FILE_PATH = "C:\\Users\\Álvaro Soares\\Documents\\GitHub\\CineMark\\CineMark\\CinemaMark\\Cinema\\src\\main\\resources\\arquivosjson\\funcionarios.json";
     private static final String BALCAO_PATH = "C:\\Users\\Álvaro Soares\\Documents\\GitHub\\CineMark\\CineMark\\CinemaMark\\Cinema\\src\\main\\resources\\arquivosjson\\balcoesFun.json";
 
@@ -57,7 +55,7 @@ public class Funcionario {
      * Nota: não é recomendado usar esse construtor diretamente.
      */
     public Funcionario() {
-        // Os valores padrão serão null para Strings e 0 para int (para idFuncionario)
+    // Os valores padrão serão null para Strings e 0 para int (para idFuncionario)
     }
 
     /**
@@ -140,6 +138,10 @@ public class Funcionario {
         this.balcaoFun = balcaoFun;
     }
 
+    /**
+     * Retorna uma representação em texto da sessão. Questão 3: Sobrescrever o método toString() de todas as classes implementadas.
+     * @return Uma string representando a sessão.
+     */
     @Override
     public String toString() {
         return "Funcionario{" +
@@ -151,6 +153,7 @@ public class Funcionario {
                 '}';
     }
 
+    //Questão número 6: Deve ser possível cadastrar os colaboradores no sistema, alterar ou editar seus atributos;
     public static void cadastrarFuncionario() {
         Funcionario novoFuncionario = new Funcionario();
 

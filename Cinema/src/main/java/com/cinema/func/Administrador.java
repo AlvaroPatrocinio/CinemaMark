@@ -1,6 +1,5 @@
 package com.cinema.func;
 import com.cinema.JsonCinema;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -15,7 +14,7 @@ public class Administrador extends Funcionario {
     private static int proximoId = 1;
     private static List<Administrador> administradores = new ArrayList<>();
 
-    //private static final String FILE_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/admins.json";
+    //Questão número 14: Salve e recupere todas as informações dos Clientes, Filmes, Produtos, Vendas, colaboradores e Estoque em um arquivo de texto.
     private static final String FILE_PATH = "C:\\Users\\Álvaro Soares\\Documents\\GitHub\\CineMark\\CineMark\\CinemaMark\\Cinema\\src\\main\\resources\\arquivosjson\\admins.json";
 
     /**
@@ -27,7 +26,7 @@ public class Administrador extends Funcionario {
      * @param senha A senha do funcionário
      */
     public Administrador(int idFuncionario, String nome, String usuario, String senha) {
-        super(idFuncionario, nome, usuario, senha); // Chama o construtor da superclasse Funcionario
+        super(idFuncionario, nome, usuario, senha); // Chama o construtor da superclasse Funcionario, questão número 4: Utilizar a palavra-chave super para implementar os construtores das subclasses.
         this.setIsAdm(true); // Define que este funcionário é um administrador
     }
 

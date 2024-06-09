@@ -24,9 +24,10 @@ public class Relatorio {
         this.venda = venda;
     }
 
-    //private static final String VENDA_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/vendas.json";
-    private static final String VENDA_PATH = "C:\\Users\\Álvaro Soares\\Documents\\GitHub\\CineMark\\CineMark\\CinemaMark\\Cinema\\src\\main\\resources\\arquivosjson\\vendas.json";
 
+    private static final String VENDA_PATH = "C:\\Users\\Álvaro Soares\\Documents\\GitHub\\CineMark\\CineMark\\CinemaMark\\Cinema\\src\\main\\resources\\arquivosjson\\vendas.json";
+    
+    //Questão número 8: Verificar e imprimir dados das vendas e dos clientes;
     public static void exibirRelatorio() {
         List<Venda> vendas = new ArrayList<>();
         vendas = JsonCinema.lerObjeto(VENDA_PATH, new TypeToken<List<Venda>>() {}.getType());

@@ -31,7 +31,7 @@ public class Filme {
     private static List<Filme> filmes = new ArrayList<>();
     private static Scanner scf = new Scanner(System.in);
 
-    //private static final String FILE_PATH = "/home/joeum/Projetos GITHUB REPO/CinemaMark/Cinema/src/main/resources/arquivosjson/filmes.json";
+    //Questão número 14: Salve e recupere todas as informações dos Clientes, Filmes, Produtos, Vendas, colaboradores e Estoque em um arquivo de texto.
     private static final String FILE_PATH = "C:\\Users\\Álvaro Soares\\Documents\\GitHub\\CineMark\\CineMark\\CinemaMark\\Cinema\\src\\main\\resources\\arquivosjson\\arquivosjson\\filmes.json";
 
     public Filme(String nome, String genero, String diretor, String descrição) {

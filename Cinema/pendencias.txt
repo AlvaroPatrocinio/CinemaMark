@@ -7,4 +7,3 @@ atributos; (Corrigir a alteração para buscar no json)
 13. Implementar a interface Comparator para as classes Filme e Venda e fazer
 comparações por diferentes atributos.
 
-15. Gerar um JavaDoc de todo o seu projeto.
