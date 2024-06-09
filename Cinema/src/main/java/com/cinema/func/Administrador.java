@@ -63,7 +63,7 @@ public class Administrador extends Funcionario {
         return null;
     }
 
-
+    //Questão número 6: Deve ser possível cadastrar os colaboradores no sistema, alterar ou editar seus atributos;
     public static void alterarCadastroAdministrador() {
         Scanner sca = new Scanner(System.in);
 

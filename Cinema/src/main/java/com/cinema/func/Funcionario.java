@@ -238,9 +238,9 @@ public class Funcionario {
         return null;
     }
 
+    //Questão número 6: Deve ser possível cadastrar os colaboradores no sistema, alterar ou editar seus atributos;
     public static void alterarCadastroFuncionario() {
         Scanner scfa = new Scanner(System.in);
-    
         System.out.print("Digite o ID do funcionário que deseja alterar: ");
         int idFuncionario = scfa.nextInt();
         scfa.nextLine(); // Limpar o buffer do scanner
