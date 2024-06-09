@@ -1,9 +1,0 @@
-Questão 16
-Apresentar no main testes do comparator implementado.
-
-Utilizar e apresentar no main a aplicação do método sort da classe collections passando o comparator criado para ordenar a lista de pessoas/usuario/cliente (qual estiver usando) com dois paramêtros diferentes. Ou seja, rodar duas vezes.
-
-Questão 17
-Criar um método find para clientes utilizando o interator e comparator. Apresentar testes do método iomplementado.
-
-Fazer chamadas ao binarySearch() da classe collections e comparar com o find IMPLEMENTADO.

@@ -41,6 +41,7 @@ public class Cliente {
      * @return Uma representação em texto do novo cliente cadastrado.
      */
     public static String cadastrarCliente(Cliente cliente) {
+
         Cliente novoCliente = new Cliente();
 
         novoCliente.setIdCliente(numClientes++);
@@ -100,6 +101,31 @@ public class Cliente {
         this.idCliente = numClientes++;
     }
 
+    /**
+     * Construtor da classe Cliente.
+     *
+     * @param idCliente     o identificador único do cliente
+     * @param nomeCompleto  o nome completo do cliente
+     * @param endereco      o endereço do cliente
+     * @param telefone      o telefone do cliente
+     * @param email         o endereço de email do cliente
+     * @param cpf           o CPF (Cadastro de Pessoa Física) do cliente
+     * @param preferencais  as preferências do cliente
+     * @param produto       o produto associado ao cliente
+     */ 
+    public Cliente(int idCliente, String nomeCompleto, String endereco, String telefone, String email, String cpf,
+            String preferencais, Produto produto) {
+        this.idCliente = idCliente;
+        this.nomeCompleto = nomeCompleto;
+        this.endereco = endereco;
+        this.telefone = telefone;
+        this.email = email;
+        this.cpf = cpf;
+        this.preferencais = preferencais;
+        this.produto = produto;
+    }
+
+    
     // Getters e Setters
     /** Questão 11. */
     public int getIdCliente() {
