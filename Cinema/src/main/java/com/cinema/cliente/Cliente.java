@@ -1,7 +1,9 @@
 package com.cinema.cliente;
 import com.cinema.JsonCinema;
+import com.cinema.func.Funcionario;
 import com.cinema.produto.Produto;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -163,6 +165,26 @@ public class Cliente {
     public void setProduto(Produto produto) {
         this.produto = produto;
     }
+
+    //Questão 15: Instaciar um iterator para a arraylist de pessoas/funcionario/cliente 
+     /**
+     * Encontra um Cliente na lista com base no nome usando Iterator.
+     *
+     * @param Nome  O nome a ser buscado.
+     * @return O Cliente encontrado, ou null se não encontrado.
+     */
+     public static Cliente findClienteByNome(String nome, List<Cliente> clientes ) {
+        Iterator <Cliente> iterator = clientes.iterator();
+
+        while (iterator.hasNext()) {
+            Cliente cliente = iterator.next();
+            if (cliente.getNomeCompleto().equals(nome)) {
+                return cliente;
+            }
+        }
+        return null;
+}
+    
 
     /**
      * Retorna uma representação em texto do cliente.

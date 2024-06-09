@@ -1,19 +1,3 @@
-13. Implementar a interface Comparator para as classes Filme e Venda e fazer
-comparações por diferentes atributos.
-
-Questão 15:
-Instaciar um iterator para a arraylist de pessoas/funcionario/cliente (qual estiver usando)
-Fazer testes no main em pecorrer o arraylist com chamadas usando o código: 
-while(iterator.hasnext())
-{ 
-imprimir(iterator.next());
-}
-
-Explicar como isso está acontecendo.
-Qual relação do código acima com o foreach em java?
-
-Testar o foreach.
-
 Questão 16
 Apresentar no main testes do comparator implementado.
 

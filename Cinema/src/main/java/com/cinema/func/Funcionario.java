@@ -1,10 +1,10 @@
 package com.cinema.func;
-
 import com.cinema.JsonCinema;
 import com.cinema.balcao.BalcaoFun;
 import com.google.gson.reflect.TypeToken;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Iterator;
 import java.util.ArrayList;
 
 /**
@@ -268,5 +268,24 @@ public class Funcionario {
             System.out.println("Nenhum funcionário encontrado com o ID fornecido.");
         }
     }
+
+    //Questão 15: Instaciar um iterator para a arraylist de pessoas/funcionario/cliente 
+     /**
+     * Encontra um Funcionario na lista com base no número de ID usando Iterator.
+     *
+     * @param Nome O nome a ser buscado.
+     * @return O Funcionario encontrado, ou null se não encontrado.
+     */
+     public static Funcionario findFuncionarioByNome(String nome, List<Funcionario> funcionarios ) {
+        Iterator <Funcionario> iterator = funcionarios.iterator();
+
+        while (iterator.hasNext()) {
+            Funcionario funcionario = iterator.next();
+            if (funcionario.getNome().equals(nome)) {
+                return funcionario;
+            }
+        }
+        return null;
+}
     
 }
