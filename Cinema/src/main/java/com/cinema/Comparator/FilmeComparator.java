@@ -19,8 +19,6 @@ public class FilmeComparator implements Comparator<Filme> {
     //Questão 13: Implementar a interface Comparator para as classes Filme e Venda e fazer comparações por diferentes atributos.
     @Override
     public int compare(Filme f1, Filme f2) {
-        Integer quantidade1 = f1.getId();
-        Integer quantidade2 = f2.getId();
-        return quantidade1.compareTo(quantidade2);
+       return f1.getNome().compareTo(f2.getNome());
     }
 }

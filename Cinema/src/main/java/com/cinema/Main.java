@@ -30,17 +30,17 @@ public class Main {
         Filme f3 = new Filme("Green", "Cor", "João", "É isso ai pessoal");
         Filme f4 = new Filme("Sempre ao seu lado", "Triste", "Zezinho", "É isso ai pessoal");
 
-        // Adição dos funcionários à lista
+        // Adição dos Filmes à lista
         listaFilme.add(f1);
         listaFilme.add(f2);
         listaFilme.add(f3);
         listaFilme.add(f4);
 
-        // Ordenação da lista de funcionários com base no nome usando o FuncionarioComparator
+        // Ordenação da lista de filmes com base no nome usando o FuncionarioComparator
         Collections.sort(listaFilme, new FilmeComparator());
 
-        // Impressão dos funcionários ordenados por nome
-        System.out.println("Funcionários ordenados por nome:");
+        // Impressão dos filmes ordenados por nome
+        System.out.println("Filmes ordenados por nome:");
         for (Filme filme : listaFilme) {
             System.out.println(filme);
         }
