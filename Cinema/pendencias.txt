@@ -1,9 +1,25 @@
-
-
-6. Deve ser possível cadastrar os colaboradores no sistema, alterar ou editar seus
-atributos; (Corrigir a alteração para buscar no json)
-
-
 13. Implementar a interface Comparator para as classes Filme e Venda e fazer
 comparações por diferentes atributos.
 
+Questão 15:
+Instaciar um iterator para a arraylist de pessoas/funcionario/cliente (qual estiver usando)
+Fazer testes no main em pecorrer o arraylist com chamadas usando o código: 
+while(iterator.hasnext())
+{ 
+imprimir(iterator.next());
+}
+
+Explicar como isso está acontecendo.
+Qual relação do código acima com o foreach em java?
+
+Testar o foreach.
+
+Questão 16
+Apresentar no main testes do comparator implementado.
+
+Utilizar e apresentar no main a aplicação do método sort da classe collections passando o comparator criado para ordenar a lista de pessoas/usuario/cliente (qual estiver usando) com dois paramêtros diferentes. Ou seja, rodar duas vezes.
+
+Questão 17
+Criar um método find para clientes utilizando o interator e comparator. Apresentar testes do método iomplementado.
+
+Fazer chamadas ao binarySearch() da classe collections e comparar com o find IMPLEMENTADO.
