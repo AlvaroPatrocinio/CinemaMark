@@ -95,7 +95,9 @@ public class Login {
      * Método principal para realizar login.
      */
     public static void realizarLogin() {
-
+        while (true) {
+        Login login = new Login();
+        
         System.out.println("----------------------------------------------");
         System.out.println("------------- Login de requerido -------------");
         System.out.println("----------------------------------------------");
@@ -106,16 +108,20 @@ public class Login {
         System.out.println("Digite a senha:");
         String senha = scanner.nextLine();
 
-        Login login = new Login(usuario, senha);
+         login = new Login(usuario, senha);
 
         if (login.verificarLoginAdmin()) {
             System.out.println("Login de administrador bem-sucedido.");
+            break;
         } else if (login.verificarLoginFuncionario()) {
             System.out.println("Login de funcionário bem-sucedido.");
+            break;
         } else {
             System.out.println("Nome de usuário ou senha incorretos.");
-                    }
-    }
+                }
+    } 
+    
+}
 
     public static void realizarLoginAdmin() {
         while (true) {
