@@ -1,6 +1,6 @@
-## Projeto Prático da Máteria de Programação Orientada a Objetos
+## Mais um Projeto Prático da Máteria de Programação Orientada a Objetos
 
-Bem-vindos ao repositório do projeto de Mercadinho.
+Bem-vindos ao repositório do projeto do Cinema!.
 
 Projeto Documentado com Diagrama de Classe
 
